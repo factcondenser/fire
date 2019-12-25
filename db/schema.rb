@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_034622) do
 
   create_table "expenses", force: :cascade do |t|
     t.bigint "amount_cents", null: false
+    t.string "description", limit: 255
     t.bigint "expense_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_034622) do
 
   create_table "incomes", force: :cascade do |t|
     t.bigint "amount_cents", null: false
+    t.string "description", limit: 255
     t.bigint "income_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
