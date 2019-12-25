@@ -4,5 +4,5 @@ class IncomeCategory < ApplicationRecord
                            dependent: :destroy
   has_many :incomes, dependent: :destroy
 
-  validates :name, length: { maximum: 63 }, presence: true, uniqueness: true
+  validates :name, length: { maximum: 63 }, presence: true, uniqueness: { scope: :parent_id }
 end

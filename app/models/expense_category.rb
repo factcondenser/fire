@@ -4,5 +4,5 @@ class ExpenseCategory < ApplicationRecord
                            dependent: :destroy
   has_many :expenses, dependent: :destroy
 
-  validates :name, length: { maximum: 63 }, presence: true, uniqueness: true
+  validates :name, length: { maximum: 63 }, presence: true, uniqueness: { scope: :parent_id }
 end
