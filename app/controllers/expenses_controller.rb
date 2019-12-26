@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExpensesController < ApplicationController
   before_action :load_expense, only: %i[show edit update destroy]
   before_action :load_expense_categories, only: %i[new create edit update]
