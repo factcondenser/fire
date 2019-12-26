@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
@@ -38,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # Custom
+  gem 'dotenv-rails', '~> 2.7.5'
   gem 'factory_bot_rails', '~> 5.1.1'
   gem 'faker', '~> 2.9.0'
   gem 'pry-byebug', '~> 3.7.0'
