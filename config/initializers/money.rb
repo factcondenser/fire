@@ -1,5 +1,9 @@
 # frozen-string-literal: true
 
+# Prepare for next major release of money gem.
+Money.locale_backend = :i18n
+Money.rounding_mode = BigDecimal::ROUND_HALF_UP
+
 MoneyRails.configure do |config|
   # To set the default currency
   #
