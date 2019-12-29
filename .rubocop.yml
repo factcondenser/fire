@@ -5,7 +5,6 @@ require:
 AllCops:
   Exclude:
     - 'bin/{bundle,rails,rake,setup,spring,webpack,webpack-dev-server,yarn}'
-    - 'config/**/*'
     - 'db/migrate**/*'
     - 'db/schema.rb'
     - 'node_modules/**/*'
@@ -29,8 +28,16 @@ Lint/ShadowingOuterLocalVariable:
 Metrics/MethodLength:
   Max: 20
 
+# This looks cleaner.
+Rails/FilePath:
+  EnforcedStyle: arguments
+
 RSpec/ImplicitSubject:
   EnforcedStyle: single_statement_only
+
+# Let some non-ascii chars through.
+Style/AsciiComments:
+  AllowedChars: [€]
 
 # `inject` seems more common in the community.
 Style/CollectionMethods:
