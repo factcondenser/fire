@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Custom
+gem 'devise', '~> 4.7.1'
+gem 'devise-jwt', '~> 0.6.0'
 gem 'money-rails', '~> 1.13.2'
 
 group :development, :test do
