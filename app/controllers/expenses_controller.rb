@@ -26,40 +26,23 @@ class ExpensesController < ApplicationController
   # POST /expenses.json
   def create
     @expense = Expense.new(expense_params)
-
-    respond_to do |format|
-      if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
-        format.json { render :show, status: :created, location: @expense }
-      else
-        format.html { render :new }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Expense was successfully created.' if @expense.save
+    respond_with @expense
   end
 
   # PATCH/PUT /expenses/1
   # PATCH/PUT /expenses/1.json
   def update
-    respond_to do |format|
-      if @expense.update(expense_params)
-        format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
-        format.json { render :show, status: :ok, location: @expense }
-      else
-        format.html { render :edit }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Expense was successfully updated.' if @expense.update(expense_params)
+    respond_with @expense
   end
 
   # DELETE /expenses/1
   # DELETE /expenses/1.json
   def destroy
     @expense.destroy
-    respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = 'Expense was successfully destroyed.'
+    respond_with @expense
   end
 
   private
