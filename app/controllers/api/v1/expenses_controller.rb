@@ -23,13 +23,13 @@ module Api
       # PATCH/PUT api/v1/expenses/1
       def update
         @expense.update(expense_params)
-        respond_with @expense
+        respond_with @expense, json: @expense
       end
 
       # DELETE api/v1/expenses/1
       def destroy
         @expense.destroy
-        respond_with @expense
+        respond_with @expense, json: @expense
       end
 
       private

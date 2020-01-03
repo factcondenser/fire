@@ -9,7 +9,7 @@ class ApiController < ActionController::API
   rescue_from ActionController::InvalidAuthenticityToken, with: :forbidden_response
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
 
-  protect_from_forgery
+  protect_from_forgery with: :exception
 
   respond_to :json
 
