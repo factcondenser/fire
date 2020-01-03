@@ -3,37 +3,30 @@
 module Api
   module V1
     class ExpensesController < ApiController
-      before_action :load_expense, only: %i[show edit update destroy]
-      before_action :load_expense_categories, only: %i[new create edit update]
+      before_action :load_expense, only: %i[show update destroy]
+      before_action :load_expense_categories, only: %i[create update]
 
-      # GET /expenses
+      # GET api/v1/expenses
       def index
         @expenses = Expense.all
       end
 
-      # GET /expenses/1
+      # GET api/v1/expenses/1
       def show; end
 
-      # GET /expenses/new
-      def new
-        @expense = Expense.new
-      end
-
-      # GET /expenses/1/edit
-      def edit; end
-
-      # POST /expenses
+      # POST api/v1/expenses
       def create
-        @expense = Expense.new(expense_params)
+        @expense = Expense.create(expense_params)
         respond_with @expense
       end
 
-      # PATCH/PUT /expenses/1
+      # PATCH/PUT api/v1/expenses/1
       def update
+        @expense.update(expense_params)
         respond_with @expense
       end
 
-      # DELETE /expenses/1
+      # DELETE api/v1/expenses/1
       def destroy
         @expense.destroy
         respond_with @expense
