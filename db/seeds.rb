@@ -32,3 +32,4 @@ EXPENSE_CATEGORIES.each do |category_name, subcategory_names|
     ExpenseCategory.find_or_create_by(name: subcategory_name, parent: category)
   end
 end
+puts 'Loaded ExpenseCategory seeds'

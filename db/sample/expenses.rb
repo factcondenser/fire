@@ -14,3 +14,4 @@ COUNT.times do
     description: Faker::Lorem.sentence
   )
 end
+puts 'Loaded Expense samples'
