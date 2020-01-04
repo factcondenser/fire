@@ -4,12 +4,11 @@ require:
 
 AllCops:
   Exclude:
-    - 'bin/{bundle,rails,rake,setup,spring,webpack,webpack-dev-server,yarn}'
-    - 'db/migrate**/*'
-    - 'db/schema.rb'
-    - 'node_modules/**/*'
-    - 'script/**/*'
-
+    - bin/{bundle,rails,rake,setup,spring,webpack,webpack-dev-server,yarn}
+    - db/migrate**/*
+    - db/schema.rb
+    - node_modules/**/*
+    - script/**/*
 
 # Commonly used screens these days easily fit more than 80 characters.
 Layout/LineLength:
@@ -23,6 +22,12 @@ Layout/LineLength:
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
+# Config blocks can be long; better not to break them up.
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/development.rb
+    - config/initializers/devise.rb
+
 # Too short methods lead to extraction of single-use methods, which can make
 # the code easier to read (by naming things), but can also clutter the class.
 Metrics/MethodLength:
@@ -31,6 +36,12 @@ Metrics/MethodLength:
 # This looks cleaner.
 Rails/FilePath:
   EnforcedStyle: arguments
+
+# Allow writing to stdout in sample and seed tasks.
+Rails/Output:
+  Exclude:
+    - db/sample/**/*
+    - db/seeds.rb
 
 RSpec/ImplicitSubject:
   EnforcedStyle: single_statement_only
