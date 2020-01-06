@@ -3,20 +3,17 @@
 class ApiController < ActionController::API
   include ActionController::RequestForgeryProtection
 
-  # TODO: MAKE SURE COOKIES DON'T WORK FOR AUTHENTICATING USERS IN API CONTROLLERS ACTIONS
+  protect_from_forgery with: :null_session
+  before_action :authenticate_user_from_token! # Must come after protect_from_forgery.
 
-  # Rails maps this to 422 Unprocessable Entity by default.
-  rescue_from ActionController::InvalidAuthenticityToken, with: :forbidden_response
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
-
-  protect_from_forgery with: :exception
 
   respond_to :json
 
   private
 
-  def forbidden_response(exception)
-    render json: { error: exception.message }, status: :forbidden
+  def authenticate_user_from_token!
+    warden.authenticate!(:token_authenticatable, store: false)
   end
 
   def not_found_response(exception)

@@ -6,27 +6,27 @@ module Api
       before_action :load_expense, only: %i[show update destroy]
       before_action :load_expense_categories, only: %i[create update]
 
-      # GET api/v1/expenses
+      # GET /api/v1/expenses
       def index
         @expenses = Expense.all
       end
 
-      # GET api/v1/expenses/1
+      # GET /api/v1/expenses/1
       def show; end
 
-      # POST api/v1/expenses
+      # POST /api/v1/expenses
       def create
         @expense = Expense.create(expense_params)
         respond_with @expense
       end
 
-      # PATCH/PUT api/v1/expenses/1
+      # PATCH/PUT /api/v1/expenses/1
       def update
         @expense.update(expense_params)
         respond_with @expense, json: @expense
       end
 
-      # DELETE api/v1/expenses/1
+      # DELETE /api/v1/expenses/1
       def destroy
         @expense.destroy
         respond_with @expense, json: @expense

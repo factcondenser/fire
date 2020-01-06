@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   resources :expenses
 
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :csrf_tokens, only: [:new]
+      resource :auth_token, only: %i[create destroy]
       resources :expenses, except: %i[new edit]
     end
   end

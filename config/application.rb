@@ -33,5 +33,8 @@ module FireApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Preserve request format in response.
+    config.debug_exception_response_format = :api
   end
 end
