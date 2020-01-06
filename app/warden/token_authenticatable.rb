@@ -2,7 +2,6 @@
 
 class TokenAuthenticatable < Warden::Strategies::Base
   def valid?
-    binding.pry
     auth_token.present? && user_email.present?
   end
 
