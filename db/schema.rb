@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_213023) do
+ActiveRecord::Schema.define(version: 2019_12_23_034622) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "expense_categories", force: :cascade do |t|
@@ -28,10 +27,12 @@ ActiveRecord::Schema.define(version: 2019_12_30_213023) do
   create_table "expenses", force: :cascade do |t|
     t.bigint "amount_cents", null: false
     t.string "description", limit: 255
+    t.bigint "user_id", null: false
     t.bigint "expense_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["expense_category_id"], name: "index_expenses_on_expense_category_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
   end
 
   create_table "income_categories", force: :cascade do |t|
@@ -46,10 +47,12 @@ ActiveRecord::Schema.define(version: 2019_12_30_213023) do
   create_table "incomes", force: :cascade do |t|
     t.bigint "amount_cents", null: false
     t.string "description", limit: 255
+    t.bigint "user_id", null: false
     t.bigint "income_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["income_category_id"], name: "index_incomes_on_income_category_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,6 +85,8 @@ ActiveRecord::Schema.define(version: 2019_12_30_213023) do
 
   add_foreign_key "expense_categories", "expense_categories", column: "parent_id"
   add_foreign_key "expenses", "expense_categories"
+  add_foreign_key "expenses", "users"
   add_foreign_key "income_categories", "income_categories", column: "parent_id"
   add_foreign_key "incomes", "income_categories"
+  add_foreign_key "incomes", "users"
 end

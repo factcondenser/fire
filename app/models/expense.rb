@@ -3,6 +3,7 @@
 class Expense < ApplicationRecord
   before_validation :assign_uncategorized
 
+  belongs_to :user
   belongs_to :expense_category
 
   monetize :amount_cents, numericality: { greater_than: 0 }
