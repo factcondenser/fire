@@ -8,7 +8,7 @@ module Api
 
       # GET /api/v1/expenses
       def index
-        @expenses = Expense.all
+        @expenses = current_user.expenses
       end
 
       # GET /api/v1/expenses/1
@@ -16,7 +16,7 @@ module Api
 
       # POST /api/v1/expenses
       def create
-        @expense = Expense.create(expense_params)
+        @expense = current_user.expenses.create(expense_params)
         respond_with @expense
       end
 
@@ -35,7 +35,7 @@ module Api
       private
 
       def load_expense
-        @expense = Expense.find(params[:id])
+        @expense = current_user.expenses.find(params[:id])
       end
 
       def load_expense_categories

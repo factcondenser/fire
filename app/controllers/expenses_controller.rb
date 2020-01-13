@@ -7,7 +7,7 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = current_user.expenses
   end
 
   # GET /expenses/1
@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.new(expense_params)
     flash[:notice] = 'Expense was successfully created.' if @expense.save
     respond_with @expense
   end
@@ -48,7 +48,7 @@ class ExpensesController < ApplicationController
   private
 
   def load_expense
-    @expense = Expense.find(params[:id])
+    @expense = current_user.expenses.find(params[:id])
   end
 
   def load_expense_categories

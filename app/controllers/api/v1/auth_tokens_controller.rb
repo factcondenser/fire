@@ -7,10 +7,10 @@ module Api
       before_action :allow_params_authentication!, only: :create
       before_action :authenticate_user!, only: :create
 
-      # POST /auth
+      # POST /api/v1/auth_token
       def create; end
 
-      # DELETE /auth
+      # DELETE /api/v1/auth_token
       def destroy
         current_user.regenerate_auth_token
       end
