@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-desc 'Raises exception if used in production'
+desc "Raises exception if used in production"
 task skip_prod: :environment do
-  raise 'You cannot run this in production' if Rails.env.production?
+  raise "You cannot run this in production" if Rails.env.production?
 end

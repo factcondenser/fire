@@ -15,6 +15,6 @@ class Expense < ApplicationRecord
   def assign_uncategorized
     return if expense_category_id.present?
 
-    self.expense_category_id = ExpenseCategory.where(name: 'Uncategorized').pick(:id)
+    self.expense_category_id = ExpenseCategory.where(name: "Uncategorized").pick(:id)
   end
 end

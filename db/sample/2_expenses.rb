@@ -19,4 +19,4 @@ SAMPLE_EXPENSE_COUNT.times do
   )
 end
 
-puts 'Loaded Expense samples'
+puts "Loaded Expense samples"

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ExpenseCategory, type: :model do
   subject { create(:expense_category, :with_parent) }
 
-  it { is_expected.to belong_to(:parent).class_name('ExpenseCategory').optional }
+  it { is_expected.to belong_to(:parent).class_name("ExpenseCategory").optional }
 
   it do
-    is_expected.to have_many(:subcategories).class_name('ExpenseCategory')
+    is_expected.to have_many(:subcategories).class_name("ExpenseCategory")
                                             .with_foreign_key(:parent_id)
                                             .inverse_of(:parent)
                                             .dependent(:destroy)

@@ -8,36 +8,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 EXPENSE_CATEGORIES = {
-  'Business' => [],
-  'Charity' => [],
-  'Comms' => %w[Internet Phone],
-  'Education' => %w[Books Online\ Materials],
-  'Entertainment' => [],
-  'Family' => [],
-  'Fitness' => [],
-  'Food' => %w[Groceries Restaurant],
-  'Friends' => [],
-  'Housing' => %w[Mortgage Rent],
-  'Insurance' => %w[Dental Health Life Renter's Vision],
-  'Supplies' => %w[Clothing Furniture Grooming Kitchen Maintenance Office Toiletries],
-  'Taxes' => %w[FICA Federal\ Witholding State\ Witholding],
-  'Transport' => %w[Bike Bus Rideshare],
-  'Utitlies' => %w[Electric Gas Laundry Water],
-  'Uncategorized' => []
+  "Business" => [],
+  "Charity" => [],
+  "Comms" => %w[Internet Phone],
+  "Education" => %w[Books Online\ Materials],
+  "Entertainment" => [],
+  "Family" => [],
+  "Fitness" => [],
+  "Food" => %w[Groceries Restaurant],
+  "Friends" => [],
+  "Housing" => %w[Mortgage Rent],
+  "Insurance" => %w[Dental Health Life Renter's Vision],
+  "Supplies" => %w[Clothing Furniture Grooming Kitchen Maintenance Office Toiletries],
+  "Taxes" => %w[FICA Federal\ Witholding State\ Witholding],
+  "Transport" => %w[Bike Bus Rideshare],
+  "Utitlies" => %w[Electric Gas Laundry Water],
+  "Uncategorized" => []
 }.freeze
 
 # Create seed users.
-user = User.find_or_initialize_by(email: 'user@example.com')
-user.password = 'password'
+user = User.find_or_initialize_by(email: "user@example.com")
+user.password = "password"
 user.confirmed_at = Time.zone.now
 user.save
 
-user = User.find_or_initialize_by(email: 'user2@example.com')
-user.password = 'password2'
+user = User.find_or_initialize_by(email: "user2@example.com")
+user.password = "password2"
 user.confirmed_at = Time.zone.now
 user.save
 
-puts 'Loaded User seeds'
+puts "Loaded User seeds"
 
 # Create seed categories.
 EXPENSE_CATEGORIES.each do |category_name, subcategory_names|
@@ -47,4 +47,4 @@ EXPENSE_CATEGORIES.each do |category_name, subcategory_names|
   end
 end
 
-puts 'Loaded ExpenseCategory seeds'
+puts "Loaded ExpenseCategory seeds"

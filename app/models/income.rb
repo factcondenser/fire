@@ -15,6 +15,6 @@ class Income < ApplicationRecord
   def assign_uncategorized
     return if income_category_id.present?
 
-    self.income_category_id = IncomeCategory.where(name: 'Uncategorized').pick(:id)
+    self.income_category_id = IncomeCategory.where(name: "Uncategorized").pick(:id)
   end
 end

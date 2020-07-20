@@ -26,14 +26,14 @@ class ExpensesController < ApplicationController
   # POST /expenses.json
   def create
     @expense = current_user.expenses.new(expense_params)
-    flash[:notice] = 'Expense was successfully created.' if @expense.save
+    flash[:notice] = "Expense was successfully created." if @expense.save
     respond_with @expense
   end
 
   # PATCH/PUT /expenses/1
   # PATCH/PUT /expenses/1.json
   def update
-    flash[:notice] = 'Expense was successfully updated.' if @expense.update(expense_params)
+    flash[:notice] = "Expense was successfully updated." if @expense.update(expense_params)
     respond_with @expense
   end
 
@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1.json
   def destroy
     @expense.destroy
-    flash[:notice] = 'Expense was successfully destroyed.'
+    flash[:notice] = "Expense was successfully destroyed."
     respond_with @expense
   end
 

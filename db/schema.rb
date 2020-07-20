@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_034622) do
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_expense_categories_on_name", unique: true
+    t.index ["name", "parent_id"], name: "index_expense_categories_on_name_and_parent_id", unique: true
     t.index ["parent_id"], name: "index_expense_categories_on_parent_id"
   end
 
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_034622) do
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_income_categories_on_name", unique: true
+    t.index ["name", "parent_id"], name: "index_income_categories_on_name_and_parent_id", unique: true
     t.index ["parent_id"], name: "index_income_categories_on_parent_id"
   end
 
