@@ -8,8 +8,6 @@ class ApiController < ActionController::API
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
 
-  respond_to :json
-
   private
 
   def authenticate_user_from_token!

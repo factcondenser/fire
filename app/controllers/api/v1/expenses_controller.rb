@@ -9,27 +9,29 @@ module Api
       # GET /api/v1/expenses
       def index
         @expenses = current_user.expenses
+        render json: ExpenseBlueprint.render(@expenses)
       end
 
       # GET /api/v1/expenses/1
-      def show; end
+      def show
+        render json: ExpenseBlueprint.render(@expense)
+      end
 
       # POST /api/v1/expenses
       def create
         @expense = current_user.expenses.create(expense_params)
-        respond_with @expense
+        render json: ExpenseBlueprint.render(@expense)
       end
 
       # PATCH/PUT /api/v1/expenses/1
       def update
         @expense.update(expense_params)
-        respond_with @expense, json: @expense
+        render json: ExpenseBlueprint.render(@expense)
       end
 
       # DELETE /api/v1/expenses/1
       def destroy
         @expense.destroy
-        respond_with @expense, json: @expense
       end
 
       private

@@ -8,7 +8,9 @@ module Api
       before_action :authenticate_user!, only: :create
 
       # POST /api/v1/auth_token
-      def create; end
+      def create
+        render json: UserBlueprint.render(current_user)
+      end
 
       # DELETE /api/v1/auth_token
       def destroy
